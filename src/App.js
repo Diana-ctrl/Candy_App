@@ -1,6 +1,7 @@
 import './App.css';
-import { AppBar, Button, Container, IconButton, Toolbar, Typography,
-Box, Paper, Grid, Card, CardMedia, CardContent, CardActions} from '@material-ui/core';
+import {
+  AppBar, Button, Container, IconButton, Toolbar, Typography,
+  Box, Paper, Grid, Card, CardMedia, CardContent, CardActions, DialogTitle, DialogContent, DialogContentText} from '@material-ui/core';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -11,7 +12,12 @@ import LocationOnIcon from '@material-ui/icons/LocationOn'
 import LayerIcon from '@material-ui/icons/Layers';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import { makeStyles } from '@material-ui/core/styles';
-import {useState} from 'react'
+import { useState } from 'react';
+
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -64,6 +70,15 @@ function App() {
   const handleChange = (e, newValue) => {
     setValue(newValue);
   }
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setOpen(false)
+  }
   return (
     <>
       <AppBar position='fixed' color='secondary'>
@@ -76,9 +91,41 @@ function App() {
               AESTHETICS
             </Typography>
             <Box mr={3} >
-              <Button color='inharit' variant='outlined'>
+              <Button color='inharit' variant='outlined' onClick={handleClickOpen}>
                 Log in
               </Button>
+              <Dialog open={open} onClose={handleClose} aria-labelledby='form-dialog-title'>
+                <DialogTitle id='form-dialog-title'>Log in</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    Log in to see videos
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    margin='dense'
+                    id='name'
+                    label='Email Adress'
+                    type='email'
+                    fullWidth
+                  />
+                  <TextField
+                    autoFocus
+                    margin='dense'
+                    id='pass'
+                    label='Password'
+                    type='password'
+                    fullWidth
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose} color='secondary'>
+                    Cancel
+                  </Button>
+                  <Button onClick={handleClose} color='secondary'>
+                    Log in
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </Box>
             <Button color='primary' variant='contained'>
               Sign up
@@ -217,7 +264,7 @@ function App() {
           />
         </BottomNavigation>
         <Typography align='center' colore='primary'
-        component='p' variant='subtitle1'>  
+          component='p' variant='subtitle1'>
           Welcome
         </Typography>
       </footer>
