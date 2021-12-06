@@ -1,9 +1,17 @@
 import './App.css';
-import { AppBar, Button, Container, IconButton, Toolbar, Typography, Box, Paper, Grid, Card, CardMedia, CardContent, CardActions } from '@material-ui/core';
+import { AppBar, Button, Container, IconButton, Toolbar, Typography,
+Box, Paper, Grid, Card, CardMedia, CardContent, CardActions} from '@material-ui/core';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import MenuIcon from '@material-ui/icons/Menu';
+import FolderIcon from '@material-ui/icons/Folder';
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn'
 import LayerIcon from '@material-ui/icons/Layers';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import { makeStyles } from '@material-ui/core/styles';
+import {useState} from 'react'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -37,12 +45,25 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     padding: theme.spacing(10),
     marginTop: theme.spacing(10)
-
+  },
+  cardMedia: {
+    paddingTop: '56.25%'
+  },
+  cardContent: {
+    flexGrow: 1
+  },
+  cardGrid: {
+    marginTop: theme.spacing(4)
   }
 }))
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 function App() {
   const classes = useStyles();
+  const [value, setValue] = useState('recents')
+
+  const handleChange = (e, newValue) => {
+    setValue(newValue);
+  }
   return (
     <>
       <AppBar position='fixed' color='secondary'>
@@ -137,7 +158,7 @@ function App() {
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
-                    classname={classes.CardMedia}
+                    className={classes.cardMedia}
                     image='https://source.unsplash.com/random'
                     title='image title'
                   />
@@ -156,7 +177,7 @@ function App() {
                     <Button size="small" color='secondary'>
                       Edit
                     </Button>
-                    <LayerIcon/>
+                    <LayerIcon />
                     <PlayCircleFilledIcon>
                     </PlayCircleFilledIcon>
                   </CardActions>
@@ -166,6 +187,40 @@ function App() {
           </Grid>
         </Container>
       </main>
+      <footer>
+        <Typography variant='h6' align='center' gutterBottom>
+          Footer
+        </Typography>
+        <BottomNavigation value={value}
+          onChange={handleChange}
+          className={classes.root}
+        >
+          <BottomNavigationAction
+            label='Recents'
+            value='recents'
+            icon={<RestoreIcon />}
+          />
+          <BottomNavigationAction
+            label='Favorietes'
+            value='favorietes'
+            icon={<FavoriteIcon />}
+          />
+          <BottomNavigationAction
+            label='Nearby'
+            value='nearby'
+            icon={<LocationOnIcon />}
+          />
+          <BottomNavigationAction
+            label='Folder'
+            value='folder'
+            icon={<FolderIcon />}
+          />
+        </BottomNavigation>
+        <Typography align='center' colore='primary'
+        component='p' variant='subtitle1'>  
+          Welcome
+        </Typography>
+      </footer>
     </>
 
   );
