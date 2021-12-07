@@ -1,7 +1,8 @@
 import './App.css';
 import {
   AppBar, Button, Container, IconButton, Toolbar, Typography,
-  Box, Paper, Grid, Card, CardMedia, CardContent, CardActions, DialogTitle, DialogContent, DialogContentText} from '@material-ui/core';
+  Box, Paper, Grid, Card, CardMedia, CardContent, CardActions, DialogTitle, DialogContent, DialogContentText
+} from '@material-ui/core';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import MenuIcon from '@material-ui/icons/Menu';
