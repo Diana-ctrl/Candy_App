@@ -1,7 +1,7 @@
 import './App.css';
 import {
   AppBar, Button, Container, IconButton, Toolbar, Typography,
-  Box, Paper, Grid, Card, CardMedia, CardContent, CardActions, DialogTitle, DialogContent, DialogContentText
+  Box, Paper, Grid, DialogTitle, DialogContent, DialogContentText
 } from '@material-ui/core';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
@@ -9,17 +9,17 @@ import MenuIcon from '@material-ui/icons/Menu';
 import FolderIcon from '@material-ui/icons/Folder';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn'
-import LayerIcon from '@material-ui/icons/Layers';
-import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { makeStyles } from '@material-ui/core/styles';
-import { useState } from 'react';
-
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-
-
+import { HalloweenSweets } from './HalloweenSweets';
+import { VeganSweets } from './VeganSweets';
+import { useState } from 'react';
+import { Donats } from './Donuts';
+import { Croissants } from './Croissants';
+import { Candies } from './Candies';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4)
   }
 }))
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 function App() {
   const classes = useStyles();
   const [value, setValue] = useState('recents')
@@ -89,7 +88,7 @@ function App() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title} >
-              AESTHETICS
+              SWEETS
             </Typography>
             <Box mr={3} >
               <Button color='inharit' variant='outlined' onClick={handleClickOpen}>
@@ -137,30 +136,20 @@ function App() {
 
       <main>
         <Paper className={classes.mainFeaturesPost}
-          style={{ backgroundImage: 'url(https://source.unsplash.com/random)' }}>
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1582293041079-7814c2f12063?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80)' }}>
           <Container fixed>
             <div className={classes.overlay} />
             <Grid container>
               <Grid item md={6}>
 
                 <div className={classes.mainFeaturesPostContent}>
-                  <Typography
-                    component="h1"
-                    variant='h3'
-                    color='inherit'
-                    gutterBottom
-                  >
-                    Aesthetics!!!!!!!!!!!
-                  </Typography>
 
                   <Typography
-                    variant="h5"
-                    color='inherit'
+                    variant="h3"
+                    className={classes.title}
                     paragraph
                   >
-                    "AESTHETICS is a philosophical science that studies two interconnected circles of phenomena:
-                    the sphere of the aesthetic as a specific manifestation of the value attitude of man to the
-                    world and the sphere of artistic activity of people."
+                    When It Comes to Sweets, Never Say Never!
                   </Typography>
 
                   <Button variant="contained" color='secondary'>
@@ -176,13 +165,11 @@ function App() {
           <Container maxWidth='md'>
             <Typography
               variant='h2' align='center' color='textPrimary' gutterBottom>
-              Sweets
+              Find Your Favourite Sweets
             </Typography>
             <Typography
               variant='h5' align='center' color='textSecondary' paragraph>
-              "AESTHETICS is a philosophical science that studies two interconnected circles of phenomena:
-              the sphere of the aesthetic as a specific manifestation of the value attitude of man to the
-              world and the sphere of artistic activity of people. "
+              We have the largest selection of sweets for every taste and color
             </Typography>
             <div className={classes.mainButtons}>
               <Grid container spacing={5} justify="center">
@@ -193,7 +180,7 @@ function App() {
                 </Grid>
                 <Grid item>
                   <Button variant='outlined' color='secondary'>
-                    Learn more
+                    Read more
                   </Button>
                 </Grid>
               </Grid>
@@ -202,7 +189,12 @@ function App() {
         </div>
         <Container className={classes.cardGrid} maxWidth='md'>
           <Grid container spacing={4}>
-            {cards.map(card => (
+            <HalloweenSweets />
+            <VeganSweets />
+            <Donats />
+            <Croissants />
+            <Candies />
+            {/* {cards.map(card => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
@@ -212,7 +204,7 @@ function App() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography variant='h5' gutterBottom>
-                      Blog Post
+                      Blog
                     </Typography>
                     <Typography >
                       Blog Post!!!
@@ -231,7 +223,7 @@ function App() {
                   </CardActions>
                 </Card>
               </Grid>
-            ))}
+            ))} */}
           </Grid>
         </Container>
       </main>
