@@ -88,7 +88,7 @@ function App() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title} >
-              SWEETS
+              Buy sweets
             </Typography>
             <Box mr={3} >
               <Button color='inharit' variant='outlined' onClick={handleClickOpen}>
@@ -194,36 +194,6 @@ function App() {
             <Donats />
             <Croissants />
             <Candies />
-            {/* {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image='https://source.unsplash.com/random'
-                    title='image title'
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography variant='h5' gutterBottom>
-                      Blog
-                    </Typography>
-                    <Typography >
-                      Blog Post!!!
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color='secondary'>
-                      View
-                    </Button>
-                    <Button size="small" color='secondary'>
-                      Edit
-                    </Button>
-                    <LayerIcon />
-                    <PlayCircleFilledIcon>
-                    </PlayCircleFilledIcon>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))} */}
           </Grid>
         </Container>
       </main>
